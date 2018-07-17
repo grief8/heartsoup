@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_friend"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.heartsoup.friend">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ir4"
+        android:id="@+id/imageView6"
+        android:scaleType="fitXY"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="" />
+
+    <TextView
+        android:text="感情好吗？"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:textStyle="italic|bold"
+        android:textSize="20sp"
+        android:id="@+id/textView21"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="好"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView21"
+        android:textStyle="bold"
+        android:background="@android:color/transparent"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="35dp"
+        android:id="@+id/button10" />
+
+    <Button
+        android:text="不好"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:background="@android:color/transparent"
+        android:layout_alignBottom="@+id/button10"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/button11" />
+
+    <TextView
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="9dp"
+        android:id="@+id/textView22"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:layout_below="@+id/button10"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="我希望有个如你一般的人
+如山间清爽的风
+如古城温暖的光
+从清晨到夜晚
+由山野到书房
+只要最后是你
+就好"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/button10"
+        android:id="@+id/textView23"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@android:color/primary_text_dark"
+        android:layout_below="@+id/textView22"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.heartsoup.home">
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/ed186f_"
+        android:id="@+id/imageButton2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/bbe003d6caf3cf6277dcc6305e58a0bc_"
+        android:id="@+id/imageButton3"
+        android:layout_above="@+id/imageButton5"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="壹心理网 - 心理学从这里开始,国内最大的心理学网络服务平台。"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView8" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/c5c_"
+        android:id="@+id/imageButton6"
+        android:layout_above="@+id/imageButton7"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/xi"
+        android:id="@+id/imageButton7"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/f4f9ae"
+        android:id="@+id/imageButton5"
+        android:layout_above="@+id/imageButton6"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="百度心理吧，心理的港湾，心灵的家"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/textView9"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="中国心理咨询网开办各类心理课程、提供远程网络与面对面心理咨询、企业EAP服务、婚姻家庭服务等。具备双认证的心理咨询队伍与心理督导小组、温馨的心理人社区、全国心理课程资讯等"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:id="@+id/textView11"
+        android:layout_above="@+id/imageButton6"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:text="心理咨询网成立于2007年5月，是中国第一家最大的免费专业在线心理咨询网站，致力于在线心理咨询网络平台的应用。"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:id="@+id/textView12"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_above="@+id/imageButton7"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="7dp" />
+
+    <TextView
+        android:text="大学生心理咨询中心通过一系列的心理健康宣传教育和心理咨询活动，帮助同学们了解心理健康知识，优化心理素质，增强心理调适能力和社会生活的适应能力，预防和缓解心理问题；"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:id="@+id/textView13"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

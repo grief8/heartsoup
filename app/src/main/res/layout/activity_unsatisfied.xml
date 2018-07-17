@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.heartsoup.unsatisfied">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/faf"
+        android:alpha="100"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:id="@+id/imageView2" />
+
+    <Button
+        android:text="想"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:background="@android:color/transparent"
+        app:layout_anchor="@+id/imageView2"
+        app:layout_anchorGravity="center_vertical|right"
+        android:layout_gravity="center_vertical|left" />
+
+    <Button
+        android:text="不想"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:id="@+id/button3"
+        app:layout_anchor="@+id/imageView2"
+        app:layout_anchorGravity="center_vertical|left"
+        android:layout_gravity="center_vertical|right" />
+
+    <TextView
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="259dp"
+        android:textColor="@color/colorAccent"
+        android:autoLink="all"
+        android:textSize="85px"
+        android:gravity="center"
+        android:id="@+id/textView3" />
+
+    <TextView
+        android:text="那你想改变吗？"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="127dp"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/textView2" />
+
+</android.support.design.widget.CoordinatorLayout>

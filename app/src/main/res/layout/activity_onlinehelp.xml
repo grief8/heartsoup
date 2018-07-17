@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_onlinehelp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.heartsoup.onlinehelp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/dd77_"
+        android:id="@+id/imageView5"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:layout_marginTop="355dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <android.support.v7.widget.FitWindowsFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:text="开始游戏"
+            android:textSize="25sp"
+            android:textColor="@color/black_overlay"
+            android:id="@+id/game"
+            android:gravity="center"
+            android:layout_marginTop="9dp"
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentStart="true"
+            />
+
+    </android.support.v7.widget.FitWindowsFrameLayout>
+
+    <TextView
+        android:text="QQ:1349212501\nweixin：西交计算机66"
+        android:textStyle="bold|italic"
+        android:textSize="70px"
+        android:textAppearance="@color/black_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:id="@+id/textView5" />
+
+    <TextView
+        android:text="xjtu心理咨询中心\n电话：82663338\n公众号：xjtucounseling"
+        android:textStyle="bold|italic"
+        android:textSize="100px"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/textView5"
+        android:gravity="center_horizontal"
+        android:id="@+id/textView7"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

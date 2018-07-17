@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.heartsoup">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/h9"
+        android:label="@string/指尖上的心理医生"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".menu" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".unsatisfied"
+            android:label="@string/title_activity_unsatisfied"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".welcome"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/指尖上的心理医生"
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".onlinehelp" />
+        <activity android:name=".home" />
+        <activity android:name=".satisfied" />
+        <activity android:name=".friend" />
+        <activity
+            android:name=".article"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_article"
+            android:parentActivityName=".menu"
+            android:theme="@style/FullscreenTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.heartsoup.menu" />
+        </activity>
+        <activity
+            android:name=".eeg"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_eeg"
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".QandA"></activity>
+    </application>
+
+</manifest>
