@@ -13,52 +13,45 @@
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/cba9be0fc43b62b7594db13db3d69dc9"
-        android:id="@+id/pressure"
-        android:scaleType="fitXY"
-        android:background="@android:color/transparent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/pressure"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:contentDescription=""
+            android:cropToPadding="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/t0"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/eeg_hint"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:gravity="center"
             android:background="@android:color/transparent"
+            android:gravity="center"
             android:keepScreenOn="true"
-            android:text="this is "
-            android:textColor="#33b5e5"
-            android:textSize="50sp"
+            android:scaleType="fitXY"
+            android:text=""
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
+
+        <Button
+            android:id="@+id/dummy_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+            android:layout_height="42dp"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:text="@string/start_now" />
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="下一个" />
-
-        </LinearLayout>
 
     </FrameLayout>
 

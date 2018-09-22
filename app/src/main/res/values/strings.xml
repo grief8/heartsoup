@@ -102,4 +102,5 @@
 
     <string name="title_activity_eeg">eeg</string>
     <string name="question">question</string>
+    <string name="start_now">start_now</string>
 </resources>

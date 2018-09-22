@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 25
     buildToolsVersion '21.1.2'
     defaultConfig {
         applicationId "com.example.heartsoup"
@@ -10,6 +10,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        ndk {
+//            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
+//        }
     }
     buildTypes {
         release {
@@ -17,6 +20,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
     productFlavors {
     }
 }
@@ -31,5 +39,5 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
     testCompile 'junit:junit:4.12'
-    compile files('libs/NskAlgoSdk.jar')
+    compile files('src/main/jniLibs/libs/NskAlgoSdk.jar')
 }

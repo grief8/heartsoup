@@ -58,23 +58,18 @@ public class menu extends AppCompatActivity {
         eeg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent eeg = new Intent();
-//                eeg.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                ComponentName com = new ComponentName("com.android.Algo_SDK_Sample", "com.android.calendar.MainActivity");
-//                eeg.setComponent(com);
-//                eeg.setAction("android.intent.action.VIEW");
-//                startActivity(eeg);
-                PackageManager packageManager = getPackageManager();
-                Intent intent=new Intent();
-                intent = packageManager.getLaunchIntentForPackage("com.neurosky.algo_sdk_sample");
-                if(intent==null){
-                    Toast.makeText(menu.this, "未安装", Toast.LENGTH_LONG).show();
-                }else{
-                    startActivity(intent);
-                }
+//                PackageManager packageManager = getPackageManager();
 //                Intent intent=new Intent();
-//                intent.setComponent(new ComponentName("com.android.calendar", "com.android.calendar.LaunchActivity"));
-//                startActivity(intent);
+//                intent = packageManager.getLaunchIntentForPackage("com.neurosky.algo_sdk_sample");
+//                if(intent==null){
+//                    Toast.makeText(menu.this, "未安装", Toast.LENGTH_LONG).show();
+//                }else{
+//                    startActivity(intent);
+//                }
+
+                Intent intent=new Intent();
+                intent.setClass(menu.this, eeg.class);
+                startActivity(intent);
             }
         });
         TextView tip = (TextView) findViewById(R.id.textView14);
