@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -62,6 +63,10 @@ public class eeg extends AppCompatActivity {
     private int output_data_count = 0;
     private int raw_data_sec_len = 85;
 
+    private String fpath = "storage/emulated/0/neuron/" ;
+    //intialize filename by timeDate
+    private String fname = initFilename("statics.txt");
+
     private NskAlgoSdk nskAlgoSdk;
 
     private int bLastOutputInterval = 1;
@@ -79,6 +84,8 @@ public class eeg extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_eeg);
 
+        //intialize filepath by timeDate
+        makeFilePath(fpath, fname);
         //图片切换
         final Button change_pic = (Button) findViewById(R.id.dummy_button);
         final ImageView pressure = (ImageView) findViewById(R.id.pressure);
@@ -134,11 +141,6 @@ public class eeg extends AppCompatActivity {
 
                 algoTypes += NskAlgoType.NSK_ALGO_TYPE_BLINK.value;
                 algoTypes += NskAlgoType.NSK_ALGO_TYPE_BP.value;
-//                    bp_deltaSeries = createSeries("Delta");
-//                    bp_thetaSeries = createSeries("Theta");
-//                    bp_alphaSeries = createSeries("Alpha");
-//                    bp_betaSeries = createSeries("Beta");
-//                    bp_gammaSeries = createSeries("Gamma");
                 try {
                     if (bInited) {
                         nskAlgoSdk.NskAlgoUninit();
@@ -152,12 +154,6 @@ public class eeg extends AppCompatActivity {
                     Log.d(TAG, "NSK_ALGO_Init() " + ret);
                     String sdkVersion = "SDK ver.: " + nskAlgoSdk.NskAlgoSdkVersion();
 
-//                    if ((algoTypes & NskAlgoType.NSK_ALGO_TYPE_ATT.value) != 0) {
-//                        sdkVersion += "\nATT ver.: " + nskAlgoSdk.NskAlgoAlgoVersion(NskAlgoType.NSK_ALGO_TYPE_ATT.value);
-//                    }
-//                    if ((algoTypes & NskAlgoType.NSK_ALGO_TYPE_MED.value) != 0) {
-//                        sdkVersion += "\nMED ver.: " + nskAlgoSdk.NskAlgoAlgoVersion(NskAlgoType.NSK_ALGO_TYPE_MED.value);
-//                    }
                     if ((algoTypes & NskAlgoType.NSK_ALGO_TYPE_BLINK.value) != 0) {
                         sdkVersion += "\nBlink ver.: " + nskAlgoSdk.NskAlgoAlgoVersion(NskAlgoType.NSK_ALGO_TYPE_BLINK.value);
                     }
@@ -203,92 +199,77 @@ public class eeg extends AppCompatActivity {
                 showToast("仔细看，它在动吗？", 2000);
             }
         });
-//        nskAlgoSdk.setOnSignalQualityListener(new NskAlgoSdk.OnSignalQualityListener() {
+//        nskAlgoSdk.setOnStateChangeListener(new NskAlgoSdk.OnStateChangeListener() {
 //            @Override
-//            public void onSignalQuality(int level) {
-////                Log.d(TAG, "NskAlgoSignalQualityListener: level: " + level);
-//                final int fLevel = level;
+//            public void onStateChange(int state, int reason) {
+//                String stateStr = "";
+//                String reasonStr = "";
+//                for (NskAlgoState s : NskAlgoState.values()) {
+//                    if (s.value == state) {
+//                        stateStr = s.toString();
+//                    }
+//                }
+//                for (NskAlgoState r : NskAlgoState.values()) {
+//                    if (r.value == reason) {
+//                        reasonStr = r.toString();
+//                    }
+//                }
+//                Log.d(TAG, "NskAlgoSdkStateChangeListener: state: " + stateStr + ", reason: " + reasonStr);
+//                final String finalStateStr = stateStr + " | " + reasonStr;
+//                final int finalState = state;
 //                runOnUiThread(new Runnable() {
 //                    @Override
 //                    public void run() {
 //                        // change UI elements here
-////                        String sqStr = NskAlgoSignalQuality.values()[fLevel].toString();
-////                        hint.setText(sqStr);
+////                        stateText.setText(finalStateStr);
+//
+//                        if (finalState == NskAlgoState.NSK_ALGO_STATE_RUNNING.value || finalState == NskAlgoState.NSK_ALGO_STATE_COLLECTING_BASELINE_DATA.value) {
+//                            bRunning = true;
+////                            startButton.setText("Pause");
+////                            startButton.setEnabled(true);
+////                            stopButton.setEnabled(true);
+//                        } else if (finalState == NskAlgoState.NSK_ALGO_STATE_STOP.value) {
+//                            bRunning = false;
+//                            raw_data = null;
+//                            raw_data_index = 0;
+////                            startButton.setText("Start");
+////                            startButton.setEnabled(true);
+////                            stopButton.setEnabled(false);
+////
+////                            headsetButton.setEnabled(true);
+////                            cannedButton.setEnabled(true);
+//
+//                            if (tgStreamReader != null && tgStreamReader.isBTConnected()) {
+//
+//                                // Prepare for connecting
+//                                tgStreamReader.stop();
+//                                tgStreamReader.close();
+//                            }
+//
+//                            output_data_count = 0;
+//                            output_data = null;
+//
+//                            System.gc();
+//                        } else if (finalState == NskAlgoState.NSK_ALGO_STATE_PAUSE.value) {
+//                            bRunning = false;
+////                            startButton.setText("Start");
+////                            startButton.setEnabled(true);
+////                            stopButton.setEnabled(true);
+//                        } else if (finalState == NskAlgoState.NSK_ALGO_STATE_ANALYSING_BULK_DATA.value) {
+//                            bRunning = true;
+////                            startButton.setText("Start");
+////                            startButton.setEnabled(false);
+////                            stopButton.setEnabled(true);
+//                        } else if (finalState == NskAlgoState.NSK_ALGO_STATE_INITED.value || finalState == NskAlgoState.NSK_ALGO_STATE_UNINTIED.value) {
+//                            bRunning = false;
+////                            startButton.setText("Start");
+////                            startButton.setEnabled(true);
+////                            stopButton.setEnabled(false);
+//                        }
 //                    }
 //                });
 //            }
 //        });
-        nskAlgoSdk.setOnStateChangeListener(new NskAlgoSdk.OnStateChangeListener() {
-            @Override
-            public void onStateChange(int state, int reason) {
-                String stateStr = "";
-                String reasonStr = "";
-                for (NskAlgoState s : NskAlgoState.values()) {
-                    if (s.value == state) {
-                        stateStr = s.toString();
-                    }
-                }
-                for (NskAlgoState r : NskAlgoState.values()) {
-                    if (r.value == reason) {
-                        reasonStr = r.toString();
-                    }
-                }
-                Log.d(TAG, "NskAlgoSdkStateChangeListener: state: " + stateStr + ", reason: " + reasonStr);
-                final String finalStateStr = stateStr + " | " + reasonStr;
-                final int finalState = state;
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // change UI elements here
-//                        stateText.setText(finalStateStr);
-
-                        if (finalState == NskAlgoState.NSK_ALGO_STATE_RUNNING.value || finalState == NskAlgoState.NSK_ALGO_STATE_COLLECTING_BASELINE_DATA.value) {
-                            bRunning = true;
-//                            startButton.setText("Pause");
-//                            startButton.setEnabled(true);
-//                            stopButton.setEnabled(true);
-                        } else if (finalState == NskAlgoState.NSK_ALGO_STATE_STOP.value) {
-                            bRunning = false;
-                            raw_data = null;
-                            raw_data_index = 0;
-//                            startButton.setText("Start");
-//                            startButton.setEnabled(true);
-//                            stopButton.setEnabled(false);
-//
-//                            headsetButton.setEnabled(true);
-//                            cannedButton.setEnabled(true);
-
-                            if (tgStreamReader != null && tgStreamReader.isBTConnected()) {
-
-                                // Prepare for connecting
-                                tgStreamReader.stop();
-                                tgStreamReader.close();
-                            }
-
-                            output_data_count = 0;
-                            output_data = null;
-
-                            System.gc();
-                        } else if (finalState == NskAlgoState.NSK_ALGO_STATE_PAUSE.value) {
-                            bRunning = false;
-//                            startButton.setText("Start");
-//                            startButton.setEnabled(true);
-//                            stopButton.setEnabled(true);
-                        } else if (finalState == NskAlgoState.NSK_ALGO_STATE_ANALYSING_BULK_DATA.value) {
-                            bRunning = true;
-//                            startButton.setText("Start");
-//                            startButton.setEnabled(false);
-//                            stopButton.setEnabled(true);
-                        } else if (finalState == NskAlgoState.NSK_ALGO_STATE_INITED.value || finalState == NskAlgoState.NSK_ALGO_STATE_UNINTIED.value) {
-                            bRunning = false;
-//                            startButton.setText("Start");
-//                            startButton.setEnabled(true);
-//                            stopButton.setEnabled(false);
-                        }
-                    }
-                });
-            }
-        });
 
 
         nskAlgoSdk.setOnBPAlgoIndexListener(new NskAlgoSdk.OnBPAlgoIndexListener() {
@@ -526,9 +507,7 @@ public class eeg extends AppCompatActivity {
         if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
         {
             try {
-                Date date = new Date();
-                DateFormat df = DateFormat.getDateInstance();
-                FileInputStream inStream = this.openFileInput("/sdcard/neuro/" + df.format(date) + "statics.txt");
+                FileInputStream inStream = this.openFileInput(fpath + fname);
                 byte[] buffer = new byte[1024];
                 int hasRead;
                 StringBuilder sb = new StringBuilder();
@@ -551,10 +530,8 @@ public class eeg extends AppCompatActivity {
         if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
         {
             try {
-                Date date = new Date();
-                DateFormat df = DateFormat.getDateInstance();
                 // 步骤2:创建一个FileOutputStream对象,MODE_APPEND追加模式
-                File file = new File("storage/emulated/0/neuro/" + df.format(date) + "statics.txt");
+                File file = new File(fpath + fname);
                 FileOutputStream fos = new FileOutputStream(file, true);
                 // 步骤3：将获取过来的值放入文件
                 fos.write(msg.getBytes());
@@ -567,10 +544,44 @@ public class eeg extends AppCompatActivity {
 
     }
 
+    private String initFilename(String fname){
+        Date date = new Date();
+        DateFormat df = DateFormat.getDateInstance();
+        return df.format(date) + fname;
+    }
+
     //analyze the result
     public String analyzeResult()
     {
         String result = "你的评分为：75 分\n 需要放松一下哦";
         return result;
+    }
+
+    // 生成文件
+    public File makeFilePath(String filePath, String fileName) {
+        File file = null;
+        makeRootDirectory(filePath);
+        try {
+            file = new File(filePath + fileName);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return file;
+    }
+
+    // 生成文件夹
+    public static void makeRootDirectory(String filePath) {
+        File file;
+        try {
+            file = new File(filePath);
+            if (!file.exists()) {
+                file.mkdir();
+            }
+        } catch (Exception e) {
+            Log.i("error:", e+"");
+        }
     }
 }

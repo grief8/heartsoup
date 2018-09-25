@@ -66,7 +66,6 @@ public class menu extends AppCompatActivity {
 //                }else{
 //                    startActivity(intent);
 //                }
-
                 Intent intent=new Intent();
                 intent.setClass(menu.this, eeg.class);
                 startActivity(intent);
